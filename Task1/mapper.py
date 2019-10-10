@@ -19,23 +19,26 @@ MAX_SIZE = 100
 def mapper_function(line):
     fields  = line.strip().split('\t')  # Split line to fields
     genres  =   fields[8]  # Gets all the genres in the dataset
-    runtime = -1 if fields[7] == "\N" else fields[7]  # Gets the runtime for the movie title
-    if genres is not "\N":
+    runtime = -1 if fields[7] == "\\N" else fields[7]  # Gets the runtime for the movie title
+    if genres != "\N":
         for genre in genres.strip().split(','):
-            yield genre, runtime
+            yield genre, int(runtime)
     else:
-        yield None, runtime
+        yield None, int(runtime)
 
-for line in sys.stdin:
+for line in a.split("\n"):
     # Call the map function for each line in the input
     for key, value in mapper_function(line):
-        if(key in combiner_dict):
+        if key is None or value == -1:
+            continue
+        if key in combiner_dict:
             combiner_dict[key][0] += value
             combiner_dict[key][1] += 1
             combiner_dict[key][2] = value if value > combiner_dict[key][2] else combiner_dict[key][2]
-            combiner_dict[key][3] = value if value > combiner_dict[key][3] else combiner_dict[key][3]
+            combiner_dict[key][3] = value if value < combiner_dict[key][3] else combiner_dict[key][3]
 
         else:
+            combiner_dict[key] = [0, 0, 0, 0]
             combiner_dict[key][0] += value
             combiner_dict[key][1] += 1
             combiner_dict[key][2] = value
@@ -50,4 +53,4 @@ for line in sys.stdin:
 
 # Emit leftover key-value pairs and use '|' as the delimiter
 for key, value in combiner_dict.items():
-    print(key + "|" + combiner_dict[key][0]+ "|" + combiner_dict[key][1]+ "|" +combiner_dict[key][2]+ "|" +combiner_dict[key][3])
+    print(key + "|" + str(combiner_dict[key][0])+ "|" + str(combiner_dict[key][1])+ "|" +str(combiner_dict[key][2])+ "|" +str(combiner_dict[key][3]))
