@@ -19,7 +19,7 @@ def mapper_function(line):
     fields  = line.strip().split('\t')  # Split line to fields
     genres  =   fields[8]  # Gets all the genres in the dataset
     runtime = -1 if fields[7] == "\\N" else fields[7]  # Gets the runtime for the movie title
-    if genres != "\N":
+    if genres != "\\N":
         for genre in genres.strip().split(','):
             yield genre, int(runtime)
     else:
