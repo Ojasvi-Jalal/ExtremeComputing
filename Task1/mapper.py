@@ -25,7 +25,7 @@ def mapper_function(line):
     else:
         yield None, int(runtime)
 
-for line in a.split("\n"):
+for line in sys.stdin:
     # Call the map function for each line in the input
     for key, value in mapper_function(line):
         if key is None or value == -1:
