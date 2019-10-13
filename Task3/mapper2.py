@@ -11,4 +11,4 @@ for line in sys.stdin:
     genre = fields[2]
     title = fields[1]
     ave_rating = fields[4]
-    print(decade + "|" + genre + "|" + title + "|" + ave_rating)
+    print(decade + "|" + genre + "|" + ave_rating + "|" + title)

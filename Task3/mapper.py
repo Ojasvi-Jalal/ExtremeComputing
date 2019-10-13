@@ -35,7 +35,7 @@ def get_decade(year):
     if 1990 <= year <= 1999:
         return 9
 
-for line in a.split("\n"):
+for line in sys.stdin:
     fields = line.strip().split('\t')  # Split the line to fields
     if len(fields) == 9:
         if fields[1] == "movie" and fields[2] != "\\N" and fields[5] != "\\N" and (
