@@ -41,8 +41,7 @@ for line in sys.stdin:
         if fields[1] == "movie" and fields[2] != "\\N" and fields[5] != "\\N" and (
                 int(fields[5]) >= 1900 and int(fields[5]) <= 1999) and fields[8] != "\\N":
             decade = get_decade(int(fields[5]))
-            for genre in fields[8].strip().split(','):
-                print(fields[0] + "|" + fields[2] + "|" + str(decade) + "|" + genre)
+            print(fields[0] + "|" + fields[2] + "|" + str(decade) + "|" + fields[8].strip())
         else:
             continue
     else:

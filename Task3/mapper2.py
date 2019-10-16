@@ -7,8 +7,4 @@ from collections import defaultdict
 
 for line in sys.stdin:
     fields = line.strip().split('|')
-    decade = fields[3]
-    genre = fields[2]
-    title = fields[1]
-    ave_rating = fields[4]
-    print(decade + "|" + genre + "|" + ave_rating + "|" + title)
+    print(fields[0] + "|" + fields[1] + "|" + fields[3] + "|" + fields[2]) # Prints: "Decade|Genre|Title|Rating"

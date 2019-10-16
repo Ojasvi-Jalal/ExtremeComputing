@@ -6,7 +6,7 @@ import sys
 
 pre_Decade = ""
 pre_Genre = ""
-for line in sys.stdin:
+for line in sys.stdin: #"Decade|Genre|Title|Rating"
     decade, genre, rating, title = line.split("|")
 
     if pre_Decade == decade and pre_Genre == genre:
