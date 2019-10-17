@@ -1,6 +1,8 @@
 #!/usr/bin/python2.7
 # mapper.py
 # cat reducer_input.xdfnghxbxdflhkgndkljgncdfkl | ./reducer.py
+
+# in: name.basics.tsv, title.crew.tsv, title.ratings.tsv, out: tconst, nconst, writes_name OR tconst, numVotes OR tconst, nconst
 import sys
 
 for line in sys.stdin:

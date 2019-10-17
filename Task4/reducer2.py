@@ -10,5 +10,3 @@ for line in sys.stdin:
     if n<10:
         print line
         n = n+1
-    else:
-        break
