@@ -13,16 +13,13 @@ a= "tt1927164\tmovie\t\N\tThe Zombies Are Coming to Town!\t0\t\N\t\N\t64\t\N" \
 "180\tComedy,Drama,Horror\ntt1642662\tmovie\tThe Works of Darren McGannon\tThe Works of Darren McGannon\t" \
 "0\t2010\t\N\t91\tComedy,Drama,Romance"
 
-combiner_dict = defaultdict(list)
-MAX_SIZE = 100
-
 for line in sys.stdin:
 #Call the map function for each line in the input
     fields = line.strip().split('\t')  # Split the line to fields
     if len(fields) == 9:
         if fields[1] == "movie" and fields[2] != "\\N" and fields[5] != "\\N" and (int(fields[5]) >= 1990 and int(fields[5]) <= 2019):
-            print(fields[0]+"|"+fields[2])
+            print(fields[0]+"|m|"+fields[2])
 
     else:
         if float(fields[1]) >=7.5 and int(fields[2]) >= 500000:
-            print(fields[0]+"|"+"")
+            print(fields[0]+"|m")
